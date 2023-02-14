@@ -1,0 +1,37 @@
+.login{
+    width: 600px;
+    background: #fff;
+    border: 1px solid #dddfe2;
+    box-align: center;
+    box-shadow: 0 2px 4px rgb(0 0 0 / 10%) 0 8px 16px rgb(0 0 0 / 10%);
+    border-radius: 8px;
+    padding: 1rem;
+    margin: 5% 30% 50% 30%;
+    align-items: center;
+    text-align: center;
+}
+
+
+
+.login > .button{
+    background: #e99930;
+    border: 2px solid black;
+    color: black;
+    font-size: 2rem;
+    padding: 0.5rem;
+    margin: 0.5rem 0;
+    border-radius: 8px;
+    outline: none;
+    cursor: pointer;
+}
+
+.login > input{
+    border-radius: 8px;
+    border: 2px solid #dddfe2;
+    outline: none;
+    color: #1d2129;
+    margin: 0.5rem 0;
+    padding: 0.5rem 0.75rem;
+    width: 92%;
+    font-size: 1rem;
+}
