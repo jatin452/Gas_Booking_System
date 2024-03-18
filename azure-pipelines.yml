@@ -1,34 +1,27 @@
-parameters:
-- name: artifactName
-  displayName: 'Artifact Name'
-  type: string
-  default: 'MyArtifact'
-
 trigger:
 - main
-
-pool:
-  vmImage: windows-latest
-
-jobs:
-- job: PowerShellScriptJob
-  displayName: 'PowerShell Script Job'
-  steps:
-  - task: PowerShell@2
-    displayName: 'Run PowerShell Script'
-    inputs:
-      targetType: 'inline'
-      script: |
-        Write-Host "Hello, Azure Pipelines!"
-        # Add your PowerShell script here
-       
-        # This is a sample shell script
-        echo "Hello from the shell script!"
-        echo "This script is running as part of the build process."
-        echo "You can add any commands or logic here that you need for your build"
-
-  - task: PublishBuildArtifacts@1
-    displayName: 'Publish Artifact'
-    inputs:
-      TargetPath: :'$(Build.ArtifactStagingDirectory)'
-      ArtifactName: 'MyArtifact'
+ 
+parameters:
+- name: inputDate
+  type: string
+  default: 'date'
+  displayName: 'Input Date'
+  
+ 
+stages:
+- stage: Build
+  displayName: Build Stage
+  jobs:
+  - job: BuildJob
+    displayName: Build Job
+    pool:
+      vmImage: 'windows-latest'
+    steps:
+    - script: |
+        echo "Input date is: $(inputDate)"
+      displayName: 'Echo input date'
+    - task: PublishPipelineArtifact@1
+      displayName: 'Publish Artifact'
+      inputs:
+        targetPath: '$(Build.ArtifactStagingDirectory)'
+        artifactName: 'output'
