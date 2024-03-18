@@ -1,19 +1,22 @@
-# Starter pipeline
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
-
 trigger:
 - main
 
 pool:
-  vmImage: ubuntu-latest
+  vmImage: windows-latest
 
-steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
-
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+jobs:
+- job: PowerShellScriptJob
+  displayName: 'PowerShell Script Job'
+  steps:
+  - task: PowerShell@2
+    displayName: 'Run PowerShell Script'
+    inputs:
+      targetType: 'inline'
+      script: |
+        Write-Host "Hello, Azure Pipelines!"
+        # Add your PowerShell script here
+       
+        # This is a sample shell script
+        echo "Hello from the shell script!"
+        echo "This script is running as part of the build process."
+        echo "You can add any commands or logic here that you need for your build"
