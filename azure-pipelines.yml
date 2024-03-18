@@ -1,3 +1,9 @@
+parameters:
+- name: artifactName
+  displayName: 'Artifact Name'
+  type: string
+  default: 'MyArtifact'
+
 trigger:
 - main
 
